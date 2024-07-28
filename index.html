@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>basketball shooting game</title>
+  <link rel="stylesheet" href="./styles/style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="record">
+      <div class="game-instructions">
+        <h2>Ready to Score?</h2>
+        <p>Spacebar to start the game, 'Q' to generate a basketball, and 'K' to shoot. Find the rhythm, challenge the high score!</p>
+      </div>
+      <div class="view-buttons">
+        <button class="front-view-btn">Front View</button>
+        <button class="top-view-btn">Top View</button>
+        <button class="side-view-btn" style="margin-right: 0;">Side View</button>
+      </div>
+      <div class="light-change-buttons">
+        <button class="front-light-btn">Front Light</button>
+        <button class="top-light-btn">Top Light</button>
+        <button class="right-light-btn">Right Light</button>
+        <button class="reset-light-btn">Origin Light</button>
+      </div>
+      <div class="start-game">
+        <button class="btn start">Start Game</button>
+      </div>
+      <div class="game-info">
+        <div class="current-score">
+          <span>Current Score:</span><span class="score">123</span>
+        </div>
+        <div class="countdown-wrapper">
+          <span>Countdown:</span><span class="countdown">30</span><span>s</span>
+        </div>
+      </div>
+      <div class="high-scores">
+        <div>
+          <div class="high-scores-title">Historical Record Ranking</div>
+          <ul class="scores-list">
+          
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div id="scorePopup" class="score-popup">
+
+      Game Over! Your score: <span id="finalScore">0</span>
+  </div>
+  </div>
+  
+  <script type="module" src="/scripts/main.js"></script>
+</body>
+</html>
