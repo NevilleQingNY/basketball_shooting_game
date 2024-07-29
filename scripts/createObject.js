@@ -2,6 +2,13 @@
 
 import * as CANNON from 'cannon-es';
 import * as THREE from 'three';
+import basketball_court from '../textures/basketball_court.png'
+import woodwall from '../textures/woodwall.png'
+import stonewall from '../textures/stonewall.png'
+import basketball from '../textures/basketball.png'
+import backboard from '../textures/backboard.png'
+import timer from '../textures/timer.png'
+import kobe from '../textures/kobe.png'
 
 // 0. create basic platform
 export function createLargePlatform(world, scene, physicsObjects) {
@@ -37,7 +44,7 @@ export function createGround(world, scene, physicsObjects) {
     });
     groundBody.position.set(0, 0, 0);
     const groundGeometry = new THREE.BoxGeometry(15, 0.1, 15);
-    const groundTexture = new THREE.TextureLoader().load('../textures/basketball_court.png');
+    const groundTexture = new THREE.TextureLoader().load(basketball_court);
     const groundMeshMaterial = new THREE.MeshPhongMaterial({ map: groundTexture });
     const groundMesh = new THREE.Mesh(groundGeometry, groundMeshMaterial);
     scene.add(groundMesh);
@@ -53,7 +60,7 @@ export function createWalls(world, scene, physicsObjects) {
     const wallMaterial = new CANNON.Material({ friction: 0.3, restitution: 0.8 });
 
     // Common texture for side walls
-    const sideWallTexture = new THREE.TextureLoader().load('../textures/woodwall.png');
+    const sideWallTexture = new THREE.TextureLoader().load(woodwall);
     const sideWallMaterial = new THREE.MeshPhongMaterial({ map: sideWallTexture });
 
     // Helper function to create individual wall segment
@@ -84,7 +91,7 @@ export function createWalls(world, scene, physicsObjects) {
     // Right wall bottom part
     createWallSegment(new CANNON.Vec3(7.5, 2, 2), new CANNON.Vec3(0.1, 2, 5.5), sideWallMaterial);
     // Back wall uses a different material to demonstrate how to switch materials if needed
-    const backWallTexture = new THREE.TextureLoader().load('../textures/stonewall.png');
+    const backWallTexture = new THREE.TextureLoader().load(stonewall);
     const backWallMaterial = new THREE.MeshPhongMaterial({ map: backWallTexture });
     createWallSegment(new CANNON.Vec3(0, 4, -7.5), new CANNON.Vec3(7.5, 4, 0.1), backWallMaterial);
 }
@@ -111,7 +118,7 @@ export function createBasketball(world, scene, physicsObjects) {
 
     ballBody.position.set(0, randomY, 3);
     const ballGeometry = new THREE.SphereGeometry(0.3, 32, 32); // Standard basketball radius
-    const ballTexture = new THREE.TextureLoader().load('../textures/basketball.png');
+    const ballTexture = new THREE.TextureLoader().load(basketball);
     const ballMeshMaterial = new THREE.MeshPhongMaterial({ map: ballTexture });
     const ballMesh = new THREE.Mesh(ballGeometry, ballMeshMaterial);
     ballMesh.receiveShadow = true
@@ -312,7 +319,7 @@ export function createBasketballBoard(world, scene, physicsObjects) {
     backboardBody.position.set(0, 4.5, -6.7);
     
     // Basketball backboard visual representation
-    const backboardTexture = new THREE.TextureLoader().load('../textures/backboard.png');
+    const backboardTexture = new THREE.TextureLoader().load(backboard);
     const backboardMeshMaterial = new THREE.MeshPhongMaterial({ map: backboardTexture });
     const backboardMesh = new THREE.Mesh(new THREE.BoxGeometry(4, 2.0, 0.05), backboardMeshMaterial);
     backboardMesh.position.copy(backboardBody.position);
@@ -407,7 +414,7 @@ export function createBench(world, scene, physicsObjects) {
 export function createDecorations(scene) {
     const textureLoader = new THREE.TextureLoader();
 
-    const timerTexture = textureLoader.load('../textures/timer.png');
+    const timerTexture = textureLoader.load(timer);
     const timerMaterial = new THREE.MeshBasicMaterial({ map: timerTexture });
     const timerGeometry = new THREE.BoxGeometry(1.8 * 2, 0.8 * 2, 0.1 * 2);
     const timerMesh = new THREE.Mesh(timerGeometry, timerMaterial);
@@ -416,7 +423,7 @@ export function createDecorations(scene) {
     timerMesh.position.set(-5, 6, -7.4);
     scene.add(timerMesh);
 
-    const kobeTexture = textureLoader.load('../textures/kobe.png');
+    const kobeTexture = textureLoader.load(kobe);
     const kobeMaterial = new THREE.MeshBasicMaterial({ map: kobeTexture });
     const kobeGeometry = new THREE.BoxGeometry(0.01 * 2, 2 * 2, 5 * 2);
     const kobeMesh = new THREE.Mesh(kobeGeometry, kobeMaterial);
